@@ -1,8 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+
+  void login() async {
+    FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+        // .th;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +25,9 @@ class LoginScreen extends StatelessWidget {
               textDirection: TextDirection.rtl,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('تسجيل الدخول',
-                 //textDirection: TextDirection.rtl,
+                Text(
+                  'تسجيل الدخول',
+                  //textDirection: TextDirection.rtl,
                   style: TextStyle(
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold,
@@ -35,7 +45,6 @@ class LoginScreen extends StatelessWidget {
                   onChanged: (String value) {
                     print(value);
                   },
-
                   decoration: InputDecoration(
                     labelText: 'البريد الاكتروني',
                     prefixIcon: Icon(
@@ -99,9 +108,7 @@ class LoginScreen extends StatelessWidget {
                       textDirection: TextDirection.rtl,
                     ),
                     TextButton(
-                      onPressed: (
-
-                          ) {},
+                      onPressed: () {},
                       child: Text(
                         'انشاء حساب',
                         textDirection: TextDirection.rtl,
